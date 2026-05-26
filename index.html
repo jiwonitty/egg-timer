@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Eggy - The Perfect Egg</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Silkscreen&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <main id="app-container">
+
+    <section class="screen" id="screen-1">
+      <div class="header-group">
+        <p class="subtitle">THE PERFECT</p>
+        <h1 class="logo">EGG</h1>
+      </div>
+
+      <div class="main-illustration">
+        <img src="assets/images/ovo-principal.png" alt="Ovo">
+        <div class="shadow"></div>
+      </div>
+
+      <div class="footer-group">
+        <button class="btn-primary" onclick="goToScreen(2)">COMEÇAR</button>
+      </div>
+    </section>
+
+    <section class="screen hidden" id="screen-2">
+
+      <header class="header-details">
+        <div class="title-group">
+          <h2 class="pixel-title">DETALHES</h2>
+          <p class="subtitle-small">do cozimento</p>
+        </div>
+        <div class="egg-header-container">
+          <img src="assets/images/ovo-principal.png" alt="Ovo Mini" class="egg-mini">
+          <div class="shadow-mini"></div>
+        </div>
+      </header>
+
+      <div class="screen-content">
+        <div class="selection-group">
+          <label class="pixel-label">TEMPERATURA</label>
+          <div class="btn-row">
+            <button class="btn-outline" onclick="setActive(this)">Alta</button>
+            <button class="btn-outline" onclick="setActive(this)">Baixa</button>
+          </div>
+        </div>
+
+        <div class="selection-group">
+          <label class="pixel-label">TAMANHO</label>
+          <div class="btn-row">
+            <button class="btn-outline" onclick="setActive(this)">P</button>
+            <button class="btn-outline" onclick="setActive(this)">M</button>
+            <button class="btn-outline" onclick="setActive(this)">G</button>
+          </div>
+        </div>
+
+        <div class="selection-group">
+          <label class="pixel-label">TIPO DE COZIMENTO</label>
+          <div class="gema-row">
+            <div class="gema-card" onclick="setActiveCard(this)">
+              <img src="assets/images/gema-mole.png" alt="Mole">
+              <div class="text-container">
+                <p>Gema <strong>mole</strong></p>
+              </div>
+            </div>
+
+            <div class="gema-card" onclick="setActiveCard(this)">
+              <img src="assets/images/gema-cremosa.png" alt="Cremosa">
+              <div class="text-container">
+                <p>Gema <strong>cremosa</strong></p>
+              </div>
+            </div>
+
+            <div class="gema-card" onclick="setActiveCard(this)">
+              <img src="assets/images/gema-dura.png" alt="Dura">
+              <div class="text-container">
+                <p>Gema <strong>dura</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer-details">
+        <div class="time-display">
+          <p class="estimate-text">Estimativa de tempo</p>
+          <div class="timer-pixel">00:00 <span class="min">MIN</span></div>
+        </div>
+        <button class="btn-next-step" onclick="prepareTimer()">
+          <span>&#62;</span>
+        </button>
+      </footer>
+
+    </section>
+    
+    <section class="screen hidden" id="screen-3">
+      <header class="header-timer">
+        <button class="btn-back-pixel" onclick="goToScreen(2)">&#60;</button>
+        <h2 class="timer-main-title" id="timer-title-text">OVO COM GEMA MOLE</h2>
+      </header>
+
+      <div class="timer-container-pixel">
+        <div class="circle-timer">
+          <svg width="250" height="250">
+            <circle class="ring-track" cx="125" cy="125" r="115"></circle>
+            <circle class="ring-fill" id="progress-bar" cx="125" cy="125" r="115"></circle>
+          </svg>
+          <div class="time-text-wrapper">
+            <span id="countdown">3:00</span>
+            <span class="min-label">MIN</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timer-details">
+        <div class="detail-item">
+          <span>Tipo de cozimento</span>
+          <strong id="display-gema">Gema mole</strong>
+        </div>
+        <div class="detail-item">
+          <span>Temperatura</span>
+          <strong id="display-temp">~100°</strong>
+        </div>
+        
+        <hr class="divider">
+
+        <div class="cooking-tip">
+          <h3>Dica de cozimento</h3>
+          <p>depois de cozinhar, colocar o ovo na água gelada ajuda a parar o cozimento e facilita descascar.</p>
+        </div>
+      </div>
+
+      <footer class="timer-footer">
+        <button class="btn-primary-pixel" id="timer-action-btn" onclick="toggleTimer()">INICIAR</button>
+      </footer>
+    </section>
+
+    <div id="error-modal" class="modal-overlay hidden">
+      <div class="rpg-balloon">
+        <div class="balloon-header">
+          <h3 id="error-title">TITULO</h3>
+        </div>
+        <div class="balloon-body">
+          <p id="error-message">Mensagem.</p>
+        </div>
+        <button id="error-ok-btn" onclick="closeErrorModal()">OK</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
